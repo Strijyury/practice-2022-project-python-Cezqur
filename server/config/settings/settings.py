@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from datetime import timedelta
 
 import dj_database_url
 
@@ -129,7 +130,7 @@ AUTHENTICATED_USER_THROTTLE_RATE = os.environ.get('AUTHENTICATED_USER_THROTTLE_R
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_THROTTLE_CLASSES': (
         'rest_framework.throttling.AnonRateThrottle',
@@ -139,6 +140,11 @@ REST_FRAMEWORK = {
         'anon': f'{ANONYMOUS_USER_THROTTLE_RATE}/day',
         'user': f'{AUTHENTICATED_USER_THROTTLE_RATE}/day',
     }
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
 }
 
 ##################################################################
