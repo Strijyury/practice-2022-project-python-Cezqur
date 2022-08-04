@@ -8,6 +8,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_filters',
+    'crispy_forms',
 ]
 
 LOCAL_APPS = [

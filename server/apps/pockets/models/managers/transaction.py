@@ -14,3 +14,6 @@ class TransactionManager(Manager):
 
     def annotate_with_transaction_sums(self) -> dict[str, Decimal]:
         return self.get_queryset().aggregate_totals()
+
+    def get_balance(self):
+        return self.get_queryset().get_balance()
